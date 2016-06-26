@@ -16,6 +16,15 @@ import javax.persistence.Table;
 @Table(name = "bookings")
 public class BookingEntity extends BaseEntity {
 
+	public BookingEntity() {
+	}
+
+	public BookingEntity(UserEntity user, TaxiEntity taxi) {
+		super();
+		this.user = user;
+		this.taxi = taxi;
+	}
+
 	/**
 	 * 
 	 */

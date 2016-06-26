@@ -62,6 +62,16 @@ public class TaxiDAO extends AbstractDAO<TaxiEntity, Long> {
 			throw new Exception("Exception while fetching taxi for id: "+id, e);
 		}
 	}
+	
+	public Boolean removeTaxi(TaxiEntity taxi) throws Exception {
+		try{
+			delete(taxi);
+			return true;
+		}catch(Exception e){
+			logger.error("Exception while deleting taxi for id: "+taxi.getId(), e);
+			throw new Exception("Exception while deleting taxi for id: "+taxi.getId(), e);
+		}
+	}
 
 	public TaxiEntity getNearestTaxi(TaxiType taxiType, Double userLat,
 			Double userLon) throws Exception {

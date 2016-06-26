@@ -3,6 +3,7 @@ package kkg.uber.DAO;
 import java.util.Date;
 
 import kkg.uber.Entity.BookingEntity;
+import kkg.uber.Entity.UserEntity;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
@@ -53,4 +54,13 @@ public class BookingDAO extends AbstractDAO<BookingEntity, Long> {
 		}
 	}
    
+	public Boolean removeBooking(BookingEntity booking) throws Exception {
+		try{
+			delete(booking);
+			return true;
+		}catch(Exception e){
+			logger.error("Exception while deleting booking for id: "+booking.getId(), e);
+			throw new Exception("Exception while deleting booking for id: "+booking.getId(), e);
+		}
+	}
 }

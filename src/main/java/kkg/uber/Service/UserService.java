@@ -3,6 +3,7 @@ package kkg.uber.Service;
 import javax.transaction.Transactional;
 
 import kkg.uber.DAO.UserDAO;
+import kkg.uber.Entity.TaxiEntity;
 import kkg.uber.Entity.UserEntity;
 
 import org.apache.commons.lang3.StringUtils;
@@ -65,4 +66,28 @@ public class UserService {
 			throw new Exception("Exception while fetching user for userId: "+id, e);
 		}
 	}
+	
+	public Boolean removeUser(Long userId) throws Exception {
+		UserEntity user = null;
+		try{
+			user = userDAO.getUserById(userId);
+		}catch(Exception e){
+			logger.error("Exception while fetching user with id: "+userId, e);
+			throw new Exception("Exception while fetching user with id: "+userId, e);
+		}
+		if(user!=null){
+			try{
+				return userDAO.removeUser(user);
+			}catch(Exception e){
+				logger.error("Exception while removing user with id: "+userId, e);
+				//throw new Exception("Exception while removing user with id: "+userId, e);
+				return false;
+			}
+		}
+		else{
+			return false;
+		}
+		
+	}
+
 }

@@ -136,4 +136,22 @@ public class BookingController {
 			return new Result(false,null,null);
 		}
 	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+	@ResponseBody
+	public Result deleteBooking(@RequestParam(value = "id", required = true) Long id){
+		try {
+			Boolean bookingRemoved = bookingService.removeBooking(id);
+			if(bookingRemoved){
+				return new Result(true,"Booking removed successfully",null);
+			}
+			else{
+				return new Result(true,"Unable to remove booking",null);
+			}
+		} catch (Exception e) {
+			logger.error("Error while removing booking with id: "+id, e);
+			return new Result(false,"Error while removing booking with id: "+id,null);
+			
+		}
+	}
 }

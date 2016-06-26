@@ -12,6 +12,18 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
 
+	public UserEntity() {
+	}
+
+	public UserEntity(String firstName, String lastName, String email,
+			Long mobileNumber) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobileNumber = mobileNumber;
+	}
+
 	/**
 	 * 
 	 */

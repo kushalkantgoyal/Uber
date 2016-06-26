@@ -94,4 +94,27 @@ public class TaxiService {
 			throw new Exception("Exception while fetching nearest taxi", e);
 		}
 	}
+
+	public Boolean removeTaxi(Long taxiId) throws Exception {
+		TaxiEntity taxi = null;
+		try{
+			taxi = taxiDAO.getTaxiById(taxiId);
+		}catch(Exception e){
+			logger.error("Exception while fetching taxi with id: "+taxiId, e);
+			throw new Exception("Exception while fetching taxi with id: "+taxiId, e);
+		}
+		if(taxi!=null){
+			try{
+				return taxiDAO.removeTaxi(taxi);
+			}catch(Exception e){
+				logger.error("Exception while removing taxi with id: "+taxiId, e);
+				//throw new Exception("Exception while removing taxi with id: "+taxiId, e);
+				return false;
+			}
+		}
+		else{
+			return false;
+		}
+		
+	}
 }

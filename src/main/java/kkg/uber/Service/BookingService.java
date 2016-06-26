@@ -180,4 +180,25 @@ public class BookingService {
 		return minutes;
 	}
 
+	public Boolean removeBooking(Long bookingId) throws Exception {
+		BookingEntity booking = null;
+		try{
+			booking = bookingDAO.getBookingById(bookingId);
+		}catch(Exception e){
+			logger.error("Exception while fetching booking with id: "+bookingId, e);
+			throw new Exception("Exception while fetching booking with id: "+bookingId, e);
+		}
+		if(booking!=null){
+			try{
+				return bookingDAO.removeBooking(booking);
+			}catch(Exception e){
+				logger.error("Exception while removing booking with id: "+bookingId, e);
+				//throw new Exception("Exception while removing booking with id: "+bookingId, e);
+				return false;
+			}
+		}
+		else{
+			return false;
+		}
+	}
 }

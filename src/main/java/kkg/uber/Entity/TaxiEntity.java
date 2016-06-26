@@ -14,6 +14,23 @@ import javax.persistence.Table;
 @Table(name = "taxis")
 public class TaxiEntity extends BaseEntity {
 
+	public TaxiEntity() {
+	}
+
+	public TaxiEntity(String registrationNumber, String driverName,
+			Long mobileNumber, String email, TaxiTypeEntity taxiType,
+			Double lat, Double lon, Boolean occupied) {
+		super();
+		this.registrationNumber = registrationNumber;
+		this.driverName = driverName;
+		this.mobileNumber = mobileNumber;
+		this.email = email;
+		this.taxiType = taxiType;
+		this.lat = lat;
+		this.lon = lon;
+		this.occupied = occupied;
+	}
+
 	/**
 	 * 
 	 */

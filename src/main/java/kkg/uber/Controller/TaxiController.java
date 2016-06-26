@@ -7,6 +7,7 @@ import kkg.uber.Service.UserService;
 import kkg.uber.Util.Result;
 
 import org.apache.log4j.Logger;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,6 +59,24 @@ public class TaxiController {
 		} catch (Exception e) {
 			logger.error("Exception while creating a new taxi"+taxi, e);
 			return new Result(false,null,null);
+		}
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+	@ResponseBody
+	public Result deleteTaxi(@RequestParam(value = "id", required = true) Long id){
+		try {
+			Boolean taxiRemoved = taxiService.removeTaxi(id);
+			if(taxiRemoved){
+				return new Result(true,"Taxi removed successfully",null);
+			}
+			else{
+				return new Result(true,"Unable to remove taxi",null);
+			}
+		} catch (Exception e) {
+			logger.error("Error while removing taxi with id: "+id, e);
+			return new Result(false,"Error while removing taxi with id: "+id,null);
+			
 		}
 	}
 	

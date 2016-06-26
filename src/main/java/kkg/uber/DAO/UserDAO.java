@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.PersistenceException;
 
+import kkg.uber.Entity.TaxiEntity;
 import kkg.uber.Entity.UserEntity;
 
 import org.apache.log4j.Logger;
@@ -57,4 +58,13 @@ public class UserDAO extends AbstractDAO<UserEntity, Long> {
 		}
 	}
    
+	public Boolean removeUser(UserEntity user) throws Exception {
+		try{
+			delete(user);
+			return true;
+		}catch(Exception e){
+			logger.error("Exception while deleting user for id: "+user.getId(), e);
+			throw new Exception("Exception while deleting user for id: "+user.getId(), e);
+		}
+	}
 }

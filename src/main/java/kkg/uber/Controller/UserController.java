@@ -75,4 +75,22 @@ public class UserController {
 			return new Result(false,null,null);
 		}
 	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+	@ResponseBody
+	public Result deleteUser(@RequestParam(value = "id", required = true) Long id){
+		try {
+			Boolean userRemoved = userService.removeUser(id);
+			if(userRemoved){
+				return new Result(true,"User removed successfully",null);
+			}
+			else{
+				return new Result(true,"Unable to remove user",null);
+			}
+		} catch (Exception e) {
+			logger.error("Error while removing user with id: "+id, e);
+			return new Result(false,"Error while removing user with id: "+id,null);
+			
+		}
+	}
 }
