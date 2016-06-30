@@ -114,7 +114,7 @@ public class BookingTaxiTest {
 		booking = mapper.convertValue(result.getData(), BookingEntity.class);
 		
 		//Starting the Ride
-		params = "bookingId="+booking.getId()+"&startLat=2&startLon=2";
+		params = "bookingId="+booking.getId();
 		result = restTemplate.postForObject(BASE_URI+"/booking/startRide?"+params, null, Result.class);
 		assertTrue("Start a Ride ", result.getSuccess());
 		booking = mapper.convertValue(result.getData(), BookingEntity.class);

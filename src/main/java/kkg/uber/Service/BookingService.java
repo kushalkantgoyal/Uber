@@ -48,6 +48,8 @@ public class BookingService {
 				user.setId(userId);
 				booking.setUser(user);
 				booking.setTaxi(taxi);
+				booking.setStartLat(userLat);
+				booking.setStartLon(userLon);
 				BookingEntity newBooking = createBooking(booking);
 				return newBooking;
 			}
@@ -117,12 +119,10 @@ public class BookingService {
 		}
 	}
 	
-	public BookingEntity startRide(Long bookingId, Double startLat, Double startLon) throws Exception{
+	public BookingEntity startRide(Long bookingId) throws Exception{
 		try{
 			BookingEntity booking = bookingDAO.findById(bookingId);
 			booking.setStartTime(new Date());
-			booking.setStartLat(startLat);
-			booking.setStartLon(startLon);
 			
 			bookingDAO.updateBooking(booking);
 			return booking;

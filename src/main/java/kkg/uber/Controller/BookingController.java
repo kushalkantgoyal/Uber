@@ -65,11 +65,9 @@ public class BookingController {
 	
 	@RequestMapping(value = "/startRide", method = RequestMethod.POST)
 	@ResponseBody
-	public Result startRide(@RequestParam(value = "bookingId", required = true) Long bookingId,
-			@RequestParam(value = "startLat", required = true) Double startLat,
-			@RequestParam(value = "startLon", required = true) Double startLon){
+	public Result startRide(@RequestParam(value = "bookingId", required = true) Long bookingId){
 		try {
-			BookingEntity booking = bookingService.startRide(bookingId, startLat, startLon);
+			BookingEntity booking = bookingService.startRide(bookingId);
 			if(booking!=null){
 				return new Result(true,"Ride started successfully",booking);
 			}
