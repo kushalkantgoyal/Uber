@@ -14,7 +14,7 @@ import kkg.uber.Util.TaxiType;
  */
 @Entity
 @Table(name = "taxi_types")
-public class TaxiTypeEntity extends BaseEntity {
+public class TaxiTypeEntity extends CommonEntity {
 
 	/**
 	 * 

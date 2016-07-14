@@ -14,7 +14,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "bookings")
-public class BookingEntity extends BaseEntity {
+public class BookingEntity extends CommonEntity {
 
 	public BookingEntity() {
 	}

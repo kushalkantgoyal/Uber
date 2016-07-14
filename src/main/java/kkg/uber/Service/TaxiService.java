@@ -28,7 +28,7 @@ public class TaxiService {
 			TaxiTypeEntity taxiType = new TaxiTypeEntity();
 			taxiType.setId(taxi.getTaxiType().getId());
 			taxi.setTaxiType(taxiType);
-			taxiDAO.createTaxi(taxi);
+			taxiDAO.create(taxi);
 			return taxi;
 		}catch(Exception e){
 			logger.error("Exception while creating taxi: "+taxi, e);
@@ -38,7 +38,7 @@ public class TaxiService {
 	
 	public TaxiEntity updateTaxi(TaxiEntity newTaxi) throws Exception{
 		try{
-			TaxiEntity oldTaxi = taxiDAO.findById(newTaxi.getId());
+			TaxiEntity oldTaxi = taxiDAO.getById(newTaxi.getId());
 			
 			if(StringUtils.isNotEmpty(newTaxi.getEmail())){
 				oldTaxi.setEmail(newTaxi.getEmail());
@@ -67,7 +67,7 @@ public class TaxiService {
 				oldTaxi.setTaxiType(taxiType);
 			}
 			
-			taxiDAO.updateTaxi(oldTaxi);
+			taxiDAO.update(oldTaxi);
 			return oldTaxi;
 			
 		}catch(Exception e){
@@ -78,7 +78,7 @@ public class TaxiService {
 
 	public TaxiEntity getTaxiById(Long id) throws Exception {
 		try{
-			return taxiDAO.getTaxiById(id);
+			return taxiDAO.getById(id);
 		}catch(Exception e){
 			logger.error("Exception while fetching taxi for id: "+id, e);
 			throw new Exception("Exception while fetching taxi for id: "+id, e);
@@ -98,14 +98,14 @@ public class TaxiService {
 	public Boolean removeTaxi(Long taxiId) throws Exception {
 		TaxiEntity taxi = null;
 		try{
-			taxi = taxiDAO.getTaxiById(taxiId);
+			taxi = taxiDAO.getById(taxiId);
 		}catch(Exception e){
 			logger.error("Exception while fetching taxi with id: "+taxiId, e);
 			throw new Exception("Exception while fetching taxi with id: "+taxiId, e);
 		}
 		if(taxi!=null){
 			try{
-				return taxiDAO.removeTaxi(taxi);
+				return taxiDAO.remove(taxi);
 			}catch(Exception e){
 				logger.error("Exception while removing taxi with id: "+taxiId, e);
 				//throw new Exception("Exception while removing taxi with id: "+taxiId, e);

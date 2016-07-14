@@ -3,7 +3,6 @@ package kkg.uber.Service;
 import javax.transaction.Transactional;
 
 import kkg.uber.DAO.UserDAO;
-import kkg.uber.Entity.TaxiEntity;
 import kkg.uber.Entity.UserEntity;
 
 import org.apache.commons.lang3.StringUtils;
@@ -24,7 +23,7 @@ public class UserService {
 	
 	public UserEntity create(UserEntity user) throws Exception{
 		try{
-			userDAO.createUser(user);
+			userDAO.create(user);
 			return user;
 		}catch(Exception e){
 			logger.error("Exception while creating user: "+user, e);
@@ -32,35 +31,35 @@ public class UserService {
 		}
 	}
 	
-	public UserEntity update(UserEntity newUser) throws Exception{
+	public UserEntity update(UserEntity user) throws Exception{
 		try{
-			UserEntity oldUser = userDAO.findById(newUser.getId());
+			UserEntity oldUser = userDAO.getById(user.getId());
 			
-			if(StringUtils.isNotEmpty(newUser.getEmail())){
-				oldUser.setEmail(newUser.getEmail());
+			if(StringUtils.isNotEmpty(user.getEmail())){
+				oldUser.setEmail(user.getEmail());
 			}
-			if(StringUtils.isNotEmpty(newUser.getFirstName())){
-				oldUser.setFirstName(newUser.getFirstName());
+			if(StringUtils.isNotEmpty(user.getFirstName())){
+				oldUser.setFirstName(user.getFirstName());
 			}
-			if(StringUtils.isNotEmpty(newUser.getLastName())){
-				oldUser.setLastName(newUser.getLastName());
+			if(StringUtils.isNotEmpty(user.getLastName())){
+				oldUser.setLastName(user.getLastName());
 			}
-			if(newUser.getMobileNumber()!=null){
-				oldUser.setMobileNumber(newUser.getMobileNumber());
+			if(user.getMobileNumber()!=null){
+				oldUser.setMobileNumber(user.getMobileNumber());
 			}
 			
-			userDAO.updateUser(oldUser);
+			userDAO.update(oldUser);
 			return oldUser;
 			
 		}catch(Exception e){
-			logger.error("Exception while updating user: "+newUser, e);
-			throw new Exception("Exception while updating user: "+newUser, e);
+			logger.error("Exception while updating user: "+user, e);
+			throw new Exception("Exception while updating user: "+user, e);
 		}
 	}
 
 	public UserEntity getUserById(Long id) throws Exception {
 		try{
-			return userDAO.getUserById(id);
+			return userDAO.getById(id);
 		}catch(Exception e){
 			logger.error("Exception while fetching user for userId: "+id, e);
 			throw new Exception("Exception while fetching user for userId: "+id, e);
@@ -70,24 +69,21 @@ public class UserService {
 	public Boolean removeUser(Long userId) throws Exception {
 		UserEntity user = null;
 		try{
-			user = userDAO.getUserById(userId);
+			user = userDAO.getById(userId);
 		}catch(Exception e){
 			logger.error("Exception while fetching user with id: "+userId, e);
 			throw new Exception("Exception while fetching user with id: "+userId, e);
 		}
 		if(user!=null){
 			try{
-				return userDAO.removeUser(user);
+				return userDAO.remove(user);
 			}catch(Exception e){
 				logger.error("Exception while removing user with id: "+userId, e);
-				//throw new Exception("Exception while removing user with id: "+userId, e);
 				return false;
 			}
 		}
 		else{
 			return false;
 		}
-		
 	}
-
 }

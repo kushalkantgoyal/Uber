@@ -61,7 +61,7 @@ public class BookingService {
 	
 	public BookingEntity getBookingById(Long id) throws Exception {
 		try{
-			return bookingDAO.getBookingById(id);
+			return bookingDAO.getById(id);
 		}catch(Exception e){
 			logger.error("Exception while fetching booking for id: "+id, e);
 			throw new Exception("Exception while fetching booking for id: "+id, e);
@@ -70,7 +70,7 @@ public class BookingService {
 
 	public BookingEntity createBooking(BookingEntity booking) throws Exception{
 		try{
-			bookingDAO.createBooking(booking);
+			bookingDAO.create(booking);
 			return booking;
 		}catch(Exception e){
 			logger.error("Exception while creating booking: "+booking, e);
@@ -80,7 +80,7 @@ public class BookingService {
 	
 	public BookingEntity updateBooking(BookingEntity newBooking) throws Exception{
 		try{
-			BookingEntity oldBooking = bookingDAO.findById(newBooking.getId());
+			BookingEntity oldBooking = bookingDAO.getById(newBooking.getId());
 			
 			if(newBooking.getUser()!=null){
 				UserEntity user = new UserEntity();
@@ -110,7 +110,7 @@ public class BookingService {
 			if(newBooking.getEndLon()!=null){
 				oldBooking.setEndLon(newBooking.getEndLon());
 			}
-			bookingDAO.updateBooking(oldBooking);
+			bookingDAO.update(oldBooking);
 			return oldBooking;
 			
 		}catch(Exception e){
@@ -121,10 +121,10 @@ public class BookingService {
 	
 	public BookingEntity startRide(Long bookingId) throws Exception{
 		try{
-			BookingEntity booking = bookingDAO.findById(bookingId);
+			BookingEntity booking = bookingDAO.getById(bookingId);
 			booking.setStartTime(new Date());
 			
-			bookingDAO.updateBooking(booking);
+			bookingDAO.update(booking);
 			return booking;
 			
 		}catch(Exception e){
@@ -135,12 +135,12 @@ public class BookingService {
 	
 	public BookingEntity endRide(Long bookingId, Double endLat, Double endLon) throws Exception{
 		try{
-			BookingEntity booking = bookingDAO.findById(bookingId);
+			BookingEntity booking = bookingDAO.getById(bookingId);
 			booking.setEndTime(new Date());
 			booking.setEndLat(endLat);
 			booking.setEndLon(endLon);
 			booking = calculateFare(booking);
-			bookingDAO.updateBooking(booking);
+			bookingDAO.update(booking);
 			TaxiEntity taxi = booking.getTaxi();
 			taxi.setLat(endLat);
 			taxi.setLon(endLon);
@@ -183,17 +183,16 @@ public class BookingService {
 	public Boolean removeBooking(Long bookingId) throws Exception {
 		BookingEntity booking = null;
 		try{
-			booking = bookingDAO.getBookingById(bookingId);
+			booking = bookingDAO.getById(bookingId);
 		}catch(Exception e){
 			logger.error("Exception while fetching booking with id: "+bookingId, e);
 			throw new Exception("Exception while fetching booking with id: "+bookingId, e);
 		}
 		if(booking!=null){
 			try{
-				return bookingDAO.removeBooking(booking);
+				return bookingDAO.remove(booking);
 			}catch(Exception e){
 				logger.error("Exception while removing booking with id: "+bookingId, e);
-				//throw new Exception("Exception while removing booking with id: "+bookingId, e);
 				return false;
 			}
 		}
