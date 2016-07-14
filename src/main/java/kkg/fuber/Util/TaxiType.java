@@ -1,4 +1,4 @@
-package kkg.uber.Util;
+package kkg.fuber.Util;
 
 /**
  * @author Kushal

@@ -1,5 +1,5 @@
 /*
--- Query: SELECT * FROM uber_db.taxi_types
+-- Query: SELECT * FROM fuber_db.taxi_types
 LIMIT 0, 10
 
 -- Date: 2016-06-27 00:15

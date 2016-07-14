@@ -1,7 +1,7 @@
-package kkg.uber.DAO;
+package kkg.fuber.DAO;
 
-import kkg.uber.Entity.TaxiEntity;
-import kkg.uber.Util.TaxiType;
+import kkg.fuber.Entity.TaxiEntity;
+import kkg.fuber.Util.TaxiType;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;

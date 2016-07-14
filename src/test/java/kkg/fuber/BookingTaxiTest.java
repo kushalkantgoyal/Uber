@@ -1,12 +1,12 @@
-package kkg.uber;
+package kkg.fuber;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import kkg.uber.Entity.BookingEntity;
-import kkg.uber.Entity.TaxiEntity;
-import kkg.uber.Entity.TaxiTypeEntity;
-import kkg.uber.Entity.UserEntity;
-import kkg.uber.Util.Result;
+import kkg.fuber.Entity.BookingEntity;
+import kkg.fuber.Entity.TaxiEntity;
+import kkg.fuber.Entity.TaxiTypeEntity;
+import kkg.fuber.Entity.UserEntity;
+import kkg.fuber.Util.Result;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class BookingTaxiTest {
-	private static String BASE_URI ="http://localhost:8080/Uber";
+	private static String BASE_URI ="http://localhost:8080/Fuber";
 	private static UserEntity user = null;
 	private static TaxiEntity taxi1 = null;
 	private static TaxiEntity taxi2 = null;

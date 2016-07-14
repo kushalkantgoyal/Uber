@@ -1,4 +1,4 @@
-package kkg.uber.Entity;
+package kkg.fuber.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,13 +1,10 @@
-package kkg.uber.Controller;
+package kkg.fuber.Controller;
 
-import kkg.uber.Entity.TaxiEntity;
-import kkg.uber.Entity.UserEntity;
-import kkg.uber.Service.TaxiService;
-import kkg.uber.Service.UserService;
-import kkg.uber.Util.Result;
+import kkg.fuber.Entity.TaxiEntity;
+import kkg.fuber.Service.TaxiService;
+import kkg.fuber.Util.Result;
 
 import org.apache.log4j.Logger;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

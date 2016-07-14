@@ -1,4 +1,4 @@
-USE uber_db;
+USE fuber_db;
 
 --
 -- Table structure for table bookings

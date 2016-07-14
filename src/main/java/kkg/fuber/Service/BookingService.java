@@ -1,15 +1,15 @@
-package kkg.uber.Service;
+package kkg.fuber.Service;
 
 import java.util.Date;
 
 import javax.transaction.Transactional;
 
-import kkg.uber.DAO.BookingDAO;
-import kkg.uber.Entity.BookingEntity;
-import kkg.uber.Entity.TaxiEntity;
-import kkg.uber.Entity.UserEntity;
-import kkg.uber.Util.TaxiType;
-import kkg.uber.Util.Utils;
+import kkg.fuber.DAO.BookingDAO;
+import kkg.fuber.Entity.BookingEntity;
+import kkg.fuber.Entity.TaxiEntity;
+import kkg.fuber.Entity.UserEntity;
+import kkg.fuber.Util.TaxiType;
+import kkg.fuber.Util.Utils;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

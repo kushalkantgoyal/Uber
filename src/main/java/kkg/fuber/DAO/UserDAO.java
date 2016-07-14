@@ -1,6 +1,6 @@
-package kkg.uber.DAO;
+package kkg.fuber.DAO;
 
-import kkg.uber.Entity.UserEntity;
+import kkg.fuber.Entity.UserEntity;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
