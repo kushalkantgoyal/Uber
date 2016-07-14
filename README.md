@@ -1,19 +1,19 @@
-# Uber
-Uber Cab (Spring MVC, Hibernate, Maven Project)
+# Fuber
+Fuber Cab (Spring MVC, Hibernate, Maven Project)
 
 # Requirements
 Mysql, Maven, Tomcat
 
 # Steps to Execute
-1. Create uber_db database in your mysql
+1. Create fuber_db database in your mysql
 2. Edit as per your configuration /src/main/resources/hibernate.properties & log4j.properties
 3. Now in the root directory execute 
     mvn install
-4. Deploy target/Uber.war
+4. Deploy target/Fuber.war
 
 # API's
 
-Base URL: localhost:8080/Uber
+Base URL: localhost:8080/Fuber
 
 1. Create Taxis: Request-Type = Post
 

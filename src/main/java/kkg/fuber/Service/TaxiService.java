@@ -1,11 +1,11 @@
-package kkg.uber.Service;
+package kkg.fuber.Service;
 
 import javax.transaction.Transactional;
 
-import kkg.uber.DAO.TaxiDAO;
-import kkg.uber.Entity.TaxiEntity;
-import kkg.uber.Entity.TaxiTypeEntity;
-import kkg.uber.Util.TaxiType;
+import kkg.fuber.DAO.TaxiDAO;
+import kkg.fuber.Entity.TaxiEntity;
+import kkg.fuber.Entity.TaxiTypeEntity;
+import kkg.fuber.Util.TaxiType;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;

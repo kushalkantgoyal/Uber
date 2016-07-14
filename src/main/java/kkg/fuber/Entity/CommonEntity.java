@@ -1,4 +1,4 @@
-package kkg.uber.Entity;
+package kkg.fuber.Entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -8,7 +8,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
-import kkg.uber.Util.Utils;
+import kkg.fuber.Util.Utils;
 
 /**
  * @author Kushal

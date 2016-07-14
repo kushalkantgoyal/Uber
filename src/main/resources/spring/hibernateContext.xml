@@ -26,7 +26,7 @@
 
   	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" depends-on="flywayForMainDB"
-		p:packagesToScan="kkg.uber.Entity" p:dataSource-ref="sdsDB"
+		p:packagesToScan="kkg.fuber.Entity" p:dataSource-ref="sdsDB"
 		p:jpaPropertyMap-ref="jpaPropertyMap" p:jpaVendorAdapter-ref="mysqlJpaAdapter" />
 
 

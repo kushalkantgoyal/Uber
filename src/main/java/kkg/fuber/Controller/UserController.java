@@ -1,8 +1,8 @@
-package kkg.uber.Controller;
+package kkg.fuber.Controller;
 
-import kkg.uber.Entity.UserEntity;
-import kkg.uber.Service.UserService;
-import kkg.uber.Util.Result;
+import kkg.fuber.Entity.UserEntity;
+import kkg.fuber.Service.UserService;
+import kkg.fuber.Util.Result;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

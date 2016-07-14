@@ -1,4 +1,4 @@
-package kkg.uber.DAO;
+package kkg.fuber.DAO;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,7 +20,7 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import kkg.uber.Entity.BaseEntity;
+import kkg.fuber.Entity.BaseEntity;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.log4j.Logger;

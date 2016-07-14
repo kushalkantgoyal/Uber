@@ -1,4 +1,4 @@
-package kkg.uber.Entity;
+package kkg.fuber.Entity;
 
 import java.io.Serializable;
 

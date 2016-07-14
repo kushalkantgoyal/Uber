@@ -1,4 +1,4 @@
-package kkg.uber.Entity;
+package kkg.fuber.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,7 +6,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
-import kkg.uber.Util.TaxiType;
+import kkg.fuber.Util.TaxiType;
 
 /**
  * @author Kushal
