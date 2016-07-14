@@ -10,7 +10,6 @@ Mysql, Maven, Tomcat
 3. Now in the root directory execute 
     mvn install
 4. Deploy target/Uber.war
-5. Import SeedData.sql
 
 # API's
 
@@ -38,7 +37,7 @@ Base URL: localhost:8080/Uber
 
     API: /booking/startRide
 
-    Request-Params: "bookingId=5&startLat=2&startLon=2"
+    Request-Params: "bookingId=5"
 
 5. End the Ride
 
