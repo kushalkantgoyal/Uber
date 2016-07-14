@@ -2,6 +2,7 @@ package kkg.uber.DAO;
 
 import kkg.uber.Entity.TaxiTypeEntity;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,12 +10,13 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public class TaxiTypeDAO extends AbstractDAO<TaxiTypeEntity, String> {
+public class TaxiTypeDAO extends CommonDAO<TaxiTypeEntity> {
 
-	protected TaxiTypeDAO() {
-		super(TaxiTypeEntity.class);
-		// TODO Auto-generated constructor stub
+	private static final Logger logger = Logger.getLogger(TaxiTypeDAO.class);
+	
+	@Override
+	public Class<TaxiTypeEntity> getModelClass() {
+		return TaxiTypeEntity.class;
 	}
-
    
 }

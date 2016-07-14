@@ -12,7 +12,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "taxis")
-public class TaxiEntity extends BaseEntity {
+public class TaxiEntity extends CommonEntity {
 
 	public TaxiEntity() {
 	}
