@@ -15,7 +15,6 @@ import javax.persistence.PersistenceException;
 import javax.persistence.Table;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -43,7 +42,6 @@ public abstract class CommonDAO<E>
     
     protected CriteriaBuilder builder;
     protected CriteriaQuery<E> criteria;
-    protected CriteriaUpdate<E> criteriaUpdate;
     protected Root<E> root;
     protected Root<E> rootUpdate;
     private Class<E> modelClass; // use this with getModelClass() api only not direct
@@ -56,8 +54,6 @@ public abstract class CommonDAO<E>
     	this.modelClass = getModelClass();
     	builder = entityManager.getCriteriaBuilder();
         criteria = builder.createQuery(getModelClass());
-        criteriaUpdate = builder.createCriteriaUpdate(getModelClass());
-        rootUpdate = criteriaUpdate.from(getModelClass());
         root = criteria.from(getModelClass());          
         criteria.select(root);        
     }
@@ -235,28 +231,6 @@ public abstract class CommonDAO<E>
 		}
 		criteria.where(predicate);
 		return getResults();
-	}
-	
-	/**
-	 * Can be used when you want to fetch multiple rows based on some column
-	 * @param criteriaColumn column on which you want to put IN query.
-	 * @param values list of values you want to provide for IN query
-	 * @param updateColumn column name which you want to update.
-	 * @param value updated value for the column.
-	 */
-	protected int executeINUpdate(String criteriaColumn, Collection<Long> values, String updateColumn, Object value) {
-		if(CollectionUtils.isEmpty(values)) {
-			return 0;
-		}
-		Expression<Long> expression = rootUpdate.get(criteriaColumn);
-		Predicate predicate = expression.in(values);
-		criteriaUpdate.set(rootUpdate.get(updateColumn), value);
-		criteriaUpdate.where(predicate);
-		return executeUpdate();		
-	}
-	
-	protected int executeUpdate() {
-		return entityManager.createQuery(criteriaUpdate).executeUpdate();
 	}
 	
 	protected Set<Long> getIdsFromEntities(Collection<E> entities) {
