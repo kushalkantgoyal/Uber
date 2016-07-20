@@ -2,8 +2,6 @@ package kkg.fuber.Service;
 
 import java.util.Date;
 
-import javax.transaction.Transactional;
-
 import kkg.fuber.DAO.BookingDAO;
 import kkg.fuber.Entity.BookingEntity;
 import kkg.fuber.Entity.TaxiEntity;
@@ -14,6 +12,7 @@ import kkg.fuber.Util.Utils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Kushal

@@ -1,7 +1,5 @@
 package kkg.fuber.Service;
 
-import javax.transaction.Transactional;
-
 import kkg.fuber.DAO.UserDAO;
 import kkg.fuber.Entity.UserEntity;
 
@@ -9,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Kushal
